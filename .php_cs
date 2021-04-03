@@ -32,6 +32,9 @@ return $config
         'concat_space' => [
             'spacing' => 'one',
         ],
+        'doctrine_annotation_braces' => [
+            'ignored_tags' => [],
+        ],
         // 必须以空行开头的语句列表
         'blank_line_before_statement' => [
             'statements' => [
