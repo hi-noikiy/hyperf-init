@@ -9,7 +9,8 @@ This file is part of Hyperf.
 @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
 EOF;
 
-return PhpCsFixer\Config::create()
+$config = new PhpCsFixer\Config();
+return $config
     ->setRiskyAllowed(true)
     ->setRules([
         '@PSR2' => true,
@@ -19,26 +20,32 @@ return PhpCsFixer\Config::create()
         'header_comment' => [
             'commentType' => 'PHPDoc',
             'header' => $header,
-            'separate' => 'none',
+            'separate' => 'both',
             'location' => 'after_declare_strict',
         ],
         'array_syntax' => [
-            'syntax' => 'short'
+            'syntax' => 'short',
         ],
         'list_syntax' => [
-            'syntax' => 'short'
+            'syntax' => 'short',
         ],
         'concat_space' => [
-            'spacing' => 'one'
+            'spacing' => 'one',
         ],
+        // 必须以空行开头的语句列表
         'blank_line_before_statement' => [
             'statements' => [
+                'break',
+                'continue',
                 'declare',
+                'return',
+                'throw',
+                'try',
             ],
         ],
         'general_phpdoc_annotation_remove' => [
             'annotations' => [
-                'author'
+                'author',
             ],
         ],
         'ordered_imports' => [
@@ -79,13 +86,26 @@ return PhpCsFixer\Config::create()
         'phpdoc_separation' => false,
         'single_quote' => true,
         'standardize_not_equals' => true,
+        'phpdoc_summary' => false,
+        'phpdoc_no_package' => false,
+        'short_scalar_cast' => false,
+        'cast_spaces' => [
+            'space' => 'single',
+        ],
+        'no_extra_blank_lines' => [
+            'tokens' => [],
+        ],
         'multiline_comment_opening_closing' => true,
+        'trailing_comma_in_multiline_array' => false,
+        'doctrine_annotation_indentation' => false,
+        'no_superfluous_phpdoc_tags' => false,
     ])
     ->setFinder(
         PhpCsFixer\Finder::create()
             ->exclude('public')
             ->exclude('runtime')
             ->exclude('vendor')
-            ->in(__DIR__)
+    // 不需要in方法，phpstorm会报错
+    // ->in(__DIR__)
     )
     ->setUsingCache(false);
