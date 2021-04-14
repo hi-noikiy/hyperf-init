@@ -11,10 +11,12 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
 
+use Monolog\Handler\RotatingFileHandler;
+
 return [
     'default' => [
         'handler' => [
-            'class' => \Monolog\Handler\RotatingFileHandler::class,
+            'class' => RotatingFileHandler::class,
             'constructor' => [
                 'filename' => BASE_PATH . '/runtime/logs/hyperf.log',
                 'level' => Monolog\Logger::DEBUG,
