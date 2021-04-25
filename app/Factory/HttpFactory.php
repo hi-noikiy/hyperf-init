@@ -51,8 +51,8 @@ class HttpFactory
     /**
      * @param $url
      * @param array $options
-     * @return ResponseInterface
      * @throws GuzzleException
+     * @return ResponseInterface
      */
     public function get($url, $options = []): ResponseInterface
     {

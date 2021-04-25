@@ -105,10 +105,12 @@ return $config
     ])
     ->setFinder(
         PhpCsFixer\Finder::create()
+            ->name('*.php')
             ->exclude('public')
             ->exclude('runtime')
             ->exclude('vendor')
-    // 不需要in方法，phpstorm会报错
-    // ->in(__DIR__)
+            ->exclude('test')
+            // 不需要in方法，phpstorm会报错
+            // ->in(__DIR__)
     )
     ->setUsingCache(false);
