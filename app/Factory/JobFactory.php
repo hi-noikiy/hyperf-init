@@ -34,9 +34,9 @@ class JobFactory
     }
 
     /**
-     * 插入队列
+     * 生产消息.
      * @param $job
-     * @param int $delay
+     * @param int $delay 延时时间 单位秒
      * @return bool
      */
     public function push($job, $delay = 0): bool
