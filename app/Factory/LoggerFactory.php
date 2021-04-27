@@ -40,8 +40,8 @@ class LoggerFactory
         $trace = explode("\n", $trace);
         array_pop($trace);
         $result = [];
-        for ($i = 0; $i < count($trace); $i++) {
-            $result[] = ($i + 1)  . ')' . substr($trace[$i], strpos($trace[$i], ' '));
+        for ($i = 0; $i < count($trace); ++$i) {
+            $result[] = ($i + 1) . ')' . substr($trace[$i], strpos($trace[$i], ' '));
         }
 
         return $result;
