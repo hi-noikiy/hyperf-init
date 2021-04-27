@@ -14,7 +14,7 @@ declare(strict_types=1);
 return [
     'default' => [
         'driver' => Hyperf\Cache\Driver\RedisDriver::class,
-        'packer' => Hyperf\Utils\Packer\PhpSerializerPacker::class,
+        'packer' => Hyperf\Utils\Packer\JsonPacker::class,
         'prefix' => 'c:',
     ],
 ];
