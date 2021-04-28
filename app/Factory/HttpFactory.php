@@ -18,6 +18,7 @@ use GuzzleHttp\RequestOptions;
 use Hyperf\Di\Annotation\Inject;
 use Hyperf\Guzzle\ClientFactory;
 use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\UriInterface;
 
 /**
@@ -42,9 +43,16 @@ class HttpFactory
     {
         $onRedirect = function (
             RequestInterface $request,
+            ResponseInterface $response,
             UriInterface $uri
         ) {
-            echo 'Redirecting! ' . $request->getUri() . ' to ' . $uri . "\n";
+            if ($response->getStatusCode() !== 200) {
+                echo 'Redirecting! ' . $request->getUri() . ' to ' . $uri . "\n";
+                LoggerFactory::interface()->debug('跳转', [
+                    $request->getUri(),
+                    $uri
+                ]);
+            }
         };
 
         $default = [
@@ -67,7 +75,7 @@ class HttpFactory
                 'track_redirects' => true,
             ],
             // 代理
-            RequestOptions::PROXY => 'http://127.0.0.1:8888',
+            // RequestOptions::PROXY => 'http://127.0.0.1:8888',
         ];
 
         if (empty($options)) {
