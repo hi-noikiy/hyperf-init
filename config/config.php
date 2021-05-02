@@ -24,12 +24,14 @@ $log_level = [
     LogLevel::WARNING,
 ];
 if (env('APP_ENV') === 'dev') {
-    $log_level = array_merge($log_level, LogLevel::DEBUG);
+    $log_level[] = LogLevel::DEBUG;
 }
 
 return [
     'app_name' => env('APP_NAME', 'skeleton'),
     'app_env' => env('APP_ENV', 'dev'),
     'scan_cacheable' => env('SCAN_CACHEABLE', false),
-    StdoutLoggerInterface::class => $log_level,
+    StdoutLoggerInterface::class => [
+        'log_level' => $log_level,
+    ],
 ];
