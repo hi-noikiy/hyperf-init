@@ -32,14 +32,14 @@ class HttpFactory
      * @Inject
      * @var ClientFactory
      */
-    private $clientFactory;
+    protected $clientFactory;
 
     /**
      * 初始化客户端
      * @param array $options
      * @return Client
      */
-    public static function init($options = []): Client
+    public static function init(array $options = []): Client
     {
         $onRedirect = function (
             RequestInterface $request,

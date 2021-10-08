@@ -39,7 +39,7 @@ class JobFactory
      * @param int $delay 延时时间 单位秒
      * @return bool
      */
-    public function push($job, $delay = 0): bool
+    public function push($job, int $delay = 0): bool
     {
         return $this->driver->push($job, $delay);
     }
