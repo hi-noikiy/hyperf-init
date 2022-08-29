@@ -1,7 +1,6 @@
 <?php
 
 declare(strict_types=1);
-
 /**
  * This file is part of Hyperf.
  *
@@ -10,15 +9,12 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
-
-use Monolog\Handler\RotatingFileHandler;
-
 return [
     'default' => [
         'handler' => [
-            'class' => RotatingFileHandler::class,
+            'class' => Monolog\Handler\StreamHandler::class,
             'constructor' => [
-                'filename' => BASE_PATH . '/runtime/logs/hyperf.log',
+                'stream' => BASE_PATH . '/runtime/logs/hyperf.log',
                 'level' => Monolog\Logger::DEBUG,
             ],
         ],
